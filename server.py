@@ -1,3 +1,4 @@
+
 """Flask application for emotion detection."""
 
 from flask import Flask, render_template, request
@@ -16,7 +17,6 @@ def home():
 @app.route("/emotionDetector")
 def detect_emotion():
     """Detect emotions and handle invalid text."""
-
     text_to_analyze = request.args.get("textToAnalyze", "")
 
     if not text_to_analyze.strip():
