@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Emotion Detection Application</title>
+</head>
+<body>
+    <h1>Emotion Detection Application</h1>
+
+    <p>Enter a sentence to identify its emotion.</p>
+
+    <input
+        type="text"
+        id="textToAnalyze"
+        placeholder="Enter your text here"
+    >
+
+    <button onclick="detectEmotion()">
+        Detect Emotion
+    </button>
+
+    <h3>Emotion Detection Result</h3>
+    <p id="result"></p>
+
+    <script>
+        async function detectEmotion() {
+            const text = document.getElementById(
+                "textToAnalyze"
+            ).value;
+
+            const response = await fetch(
+                "/emotionDetector?textToAnalyze=" +
+                encodeURIComponent(text)
+            );
+
+            document.getElementById("result").textContent =
+                await response.text();
+        }
+    </script>
+</body>
+</html>
